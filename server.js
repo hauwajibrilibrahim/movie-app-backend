@@ -9,14 +9,15 @@ const recommendationRoutes = require('./routes/recommendations');
 
 
 const app = express();
+const allowedOrigins = ['http://localhost:5173', 'https://movieemuse.vercel.app'];
 const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(express.json());
 app.use(cors({
-  origin: ['https://movieemuse.vercel.app'],
+  origin: allowedOrigins,
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  credentials: false 
+  allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 app.use('/api/auth', authRoutes);
 app.use('/api/user', userRoutes);
