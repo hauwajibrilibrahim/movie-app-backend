@@ -4,10 +4,6 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 
-router.get('/ping', (req, res) => {
-  res.json({ message: 'pong' });
-});
-
 // POST /api/auth/register
 router.post('/register', async (req, res) => {
   const { username, email, password } = req.body;
