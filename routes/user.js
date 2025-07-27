@@ -167,6 +167,20 @@ router.get('/reviews', verifyToken, async (req, res) => {
     res.status(500).json({ message: 'Failed to fetch reviews' });
   }
 });
+/// GET /api/reviews/:movieId - Public route to get all reviews for a movie
+router.get('/reviews/:movieId', async (req, res) => {
+  try {
+    const { movieId } = req.params;
+    const reviews = await Review.find({ movieId })
+      .populate('user', 'name') // only get user's name
+      .sort({ createdAt: -1 });
+
+    res.json(reviews);
+  } catch (error) {
+    console.error('Error fetching reviews:', error);
+    res.status(500).json({ message: 'Failed to fetch movie reviews' });
+  }
+});
 
 // PUT /api/user/review/:id - Update a review
 router.put('/review/:id', verifyToken, async (req, res) => {
