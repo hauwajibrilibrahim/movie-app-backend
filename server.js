@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
-const reviewRoutes = require('./routes/review');
 const testTMDB = require('./routes/test');
 const recommendationRoutes = require('./routes/recommendations');
 
@@ -22,7 +21,6 @@ app.use(cors({
 }));
 app.use('/api/auth', authRoutes);
 app.use('/api/user', userRoutes);
-app.use('/api/reviews', reviewRoutes); 
 app.use('/api/recommendations', recommendationRoutes);
 app.use('/api', testTMDB);
 
