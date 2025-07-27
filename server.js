@@ -6,6 +6,7 @@ const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
 const testTMDB = require('./routes/test');
 const recommendationRoutes = require('./routes/recommendations');
+const reviewRoutes = require('./routes/review');
 
 
 const app = express();
@@ -22,6 +23,7 @@ app.use(cors({
 app.use('/api/auth', authRoutes);
 app.use('/api/user', userRoutes);
 app.use('/api/recommendations', recommendationRoutes);
+app.use('/api/reviews', reviewRoutes);
 app.use('/api', testTMDB);
 
 
